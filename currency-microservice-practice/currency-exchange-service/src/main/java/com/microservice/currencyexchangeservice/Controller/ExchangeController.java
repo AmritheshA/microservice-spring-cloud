@@ -19,9 +19,12 @@ public class ExchangeController {
     @Autowired
     private ResponseRepo repo;
 
+
     @GetExchange("/currency-exchange/{from}/to/{to}")
     public ExchangeCurrencyResponse getCurrencyExchanger(@PathVariable String from,
                                                          @PathVariable String to) {
+
+
 
         ExchangeCurrencyResponse exchangeCurrencyResponse = repo.findByFromAndTo(from,to);
 
@@ -31,6 +34,8 @@ public class ExchangeController {
 
         exchangeCurrencyResponse.setEnvironment(env);
 
+
+        System.out.println(Thread.currentThread().getName());
         return exchangeCurrencyResponse;
     }
 }
